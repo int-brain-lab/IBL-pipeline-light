@@ -30,7 +30,7 @@ if 'ibl_ephys' in accessible_schemas and \
     access_key = os.environ.get('S3_ACCESS')
     secret_key = os.environ.get('S3_SECRET')
 
-    if (access_key is None or secret_key is None) and len(S3Access.fetch()) > 0:
+    if (access_key is None or secret_key is None) and S3Access():
         # if there are multiple entries in S3, it won't work
         access_key, secret_key = S3Access.fetch1('access_key', 'secret_key')
 
