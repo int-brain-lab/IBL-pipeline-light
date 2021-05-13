@@ -6,11 +6,11 @@ A light version of IBL pipeline that allows users to access datajoint tables.
 ## Modules
 A user connecting to the public IBL database could use the following modules:
 
-`reference`, `subject`, `action`, `acquisition`, `data`, `behavior`, and `analyses.behavior`.
+`reference`, `subject`, `action`, `acquisition`, `data`, `behavior`, `ephys`, `histology`, and `analyses.behavior`.
 
 In addition to the above modules, an IBL internal user connecting to the internal IBL database could use the following modules as well:
 
-`ephys`, `histology`, `qc`
+`qc`
 
 
 ## Install package and set up the configuration
@@ -32,7 +32,7 @@ dj.config.save_local()
 ```
 `host_name` is either the IBL public database `datajoint-public.internationalbrainlab.org` or the internal database `datajoint.internationalbrainlab.org`.
 
-`dj.config.save_local()` saves the config file in the local directory, which allows direct connection to the database in this directory.
+`dj.config.save_local()` saves the config file `dj_local_conf.json` in the local directory, which allows direct connection to the database in this directory. The next time if the python kernel starts from the directory containing `dj_local_conf.json`, DataJoint will be prefigured while importing.
 
 If you need the global config that allows direct connection from any directory, use `dj.config.save_global()` instead.
 
