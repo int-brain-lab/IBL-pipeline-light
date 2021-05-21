@@ -1,5 +1,7 @@
 import datajoint as dj
 import os
+
+
 dj.config['enable_python_native_blobs'] = True
 
 reference = dj.create_virtual_module('reference', 'ibl_reference')
@@ -34,15 +36,23 @@ if 'ibl_ephys' in accessible_schemas and \
         # if there are multiple entries in S3, it won't work
         access_key, secret_key = S3Access.fetch1('access_key', 'secret_key')
 
+    if 'public' in dj.config['database.host']:
+        bucket = 'ibl-dj-external-public'
+        location = '/public/ephys'
+
+    else:
+        bucket = 'ibl-dj-external'
+        location = '/ephys'
+
     dj.config['stores'] = {
-        'ephys': dict(
-            protocol='s3',
-            endpoint='s3.amazonaws.com',
-            access_key=access_key,
-            secret_key=secret_key,
-            bucket='ibl-dj-external',
-            location='/ephys'
-        )
+        'ephys': {
+            'protocol': 's3',
+            'endpoint': 's3.amazonaws.com',
+            'access_key': access_key,
+            'secret_key': secret_key,
+            'bucket': bucket,
+            'location': location
+        },
     }
 
     ephys = dj.create_virtual_module('ephys', 'ibl_ephys')
