@@ -54,7 +54,7 @@ dj.config.save_local()
     + user and pass: currently there are two approaches to get username and password for external users:
 
         + For **NeuroMatch Academy users**: fill in [a form](https://datajoint.io/events/nma-ibl-public) to get an email containing the credentials.
-        + For **general users**: visit our [public JupyterHub](https://jupyterhub.internationalbrainlab.org) and sign up with your GitHub account. The notebook `public_notebooks/04-Access the database locally.ipynb` gives instructions on the username and password information.
+        + For **general users**: visit our [public JupyterHub](https://jupyterhub.internationalbrainlab.org) and sign up with your GitHub account. The notebook `public_notebooks/05-Access the database locally.ipynb` gives instructions on the username and password information.
 
 
 `dj.config.save_local()` saves the config file `dj_local_conf.json` in the local directory, which allows direct connection to the database in this directory. The next time if the python kernel starts from the directory containing `dj_local_conf.json`, DataJoint will be pre-configured while importing.
